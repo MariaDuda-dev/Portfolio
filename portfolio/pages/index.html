@@ -1,57 +1,115 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>Portfólio · Cosmos Dev</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style/style.css">
-  <title>Portfólio</title>
 </head>
 <body>
 
-  <div class="container">
-    
-    <div class="top-bar">
-      <button id="modoClaroEscuro">Modo escuro</button>
-    </div>
+<canvas id="canvas-stars"></canvas>
 
-    <div class="hero">
-      <h1>Maria Eduarda Pereira Mendonça</h1>
-      <p class="titulo">Estudante de Desenvolvimento de Sistemas</p>
-      <p class="bio">
-        Tenho 18 anos e estou construindo meu caminho no mundo da tecnologia.
-        Desejo ter uma carreira solida cheia de realizações. Gosto do meu açúcar com um pouco de café. 
-      </p>
-    </div>
+<nav>
+  <div class="nav-logo">✦ COSMOS.DEV</div>
+  <ul class="nav-links">
+    <li><a href="#solar">Sistema Solar</a></li>
+    <li><a href="#skills">Habilidades</a></li>
+    <li><a href="#projects">Projetos</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+</nav>
 
-    <section>
-      <h2>Tempo de curso</h2>
-      <div class="form-row">
-        <div>
-          <label for="dataInicio">Data de ingresso</label>
-          <input type="date" id="dataInicio">
-        </div>
-        <div>
-          <label for="dataFim">Data de formatura</label>
-          <input type="date" id="dataFim">
-        </div>
-      </div>
-      <button class="btn" onclick="calcular()">Calcular</button>
-      <p id="tempoRestante"></p>
-    </section>
+<!-- HERO -->
+<section id="hero">
+  <div class="sun"></div>
+  <p class="hero-label">Portfólio · Desenvolvedor</p>
+  <h1 class="hero-title">Maria Eduarda<br>Pereira Mendonça</h1>
+  <p class="hero-role">Desenvolvedora Full Stack</p>
+  <p class="hero-bio">Transformo ideias em projetos reais</p>
+  <a href="#solar" class="btn">Explorar o Sistema</a>
+  <div class="scroll-arrow">rolar</div>
+</section>
 
-    <section>
-      <h2>Descubra seu perfil dev</h2>
-      <p class="quiz-desc">Você prefere trabalhar com...</p>
-      <div class="quiz-buttons">
-        <button class="btn-quiz" id="btn-visual">Visual e design</button>
-        <button class="btn-quiz" id="btn-logica">Lógica e dados</button>
-      </div>
-      <p id="resultado-quiz"></p>
-    </section>
-
+<!-- SOLAR SYSTEM -->
+<section id="solar">
+  <div class="section-head">
+    <p class="section-tag">Sistema Solar</p>
+    <h2 class="section-title">Os Planetas & Curiosidades</h2>
+    <div class="section-line"></div>
   </div>
 
-  <script src="../scripts/script.js"></script>
+  <div class="planets-grid" id="planets-grid"></div>
+</section>
+
+<div class="div-line"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-head">
+    <p class="section-tag">Habilidades</p>
+    <h2 class="section-title">Tecnologias & Ferramentas</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-row"><div class="skill-top"><span class="skill-name">JavaScript</span><span class="skill-pct"></span></div><div class="bar-bg"><div class="bar-fill" style="width:92%;animation-delay:.1s"></div></div></div>
+    <div class="skill-row"><div class="skill-top"><span class="skill-name">CSS</span><span class="skill-pct"></span></div><div class="bar-bg"><div class="bar-fill" style="width:88%;animation-delay:.2s"></div></div></div>
+    <div class="skill-row"><div class="skill-top"><span class="skill-name">HTML</span><span class="skill-pct"></span></div><div class="bar-bg"><div class="bar-fill" style="width:80%;animation-delay:.3s"></div></div></div>
+    <div class="skill-row"><div class="skill-top"><span class="skill-name">UI/UX</span><span class="skill-pct"></span></div><div class="bar-bg"><div class="bar-fill" style="width:85%;animation-delay:.4s"></div></div></div>
+    <div class="skill-row"><div class="skill-top"><span class="skill-name">Python</span><span class="skill-pct"></span></div><div class="bar-bg"><div class="bar-fill" style="width:70%;animation-delay:.5s"></div></div></div>
+    <div class="skill-row"><div class="skill-top"><span class="skill-name">SQL</span><span class="skill-pct"></span></div><div class="bar-bg"><div class="bar-fill" style="width:75%;animation-delay:.6s"></div></div></div>
+  </div>
+</section>
+
+<div class="div-line"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-head">
+    <p class="section-tag">Projetos</p>
+    <h2 class="section-title">Missões Concluídas</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="proj-list">
+    <div class="proj-card">
+      <div class="proj-icon" style="--pi:rgba(96,165,250,.08);--pib:rgba(96,165,250,.2)">🛰️</div>
+      <div><div class="proj-title">OrbitAPI</div><div class="proj-desc">API REST para rastreamento em tempo real com autenticação JWT e cache Redis.</div></div>
+      <div class="proj-tags"><span class="tag">Node.js</span><span class="tag">Redis</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon" style="--pi:rgba(125,232,232,.08);--pib:rgba(125,232,232,.2)">🌌</div>
+      <div><div class="proj-title">NebulaDash</div><div class="proj-desc">Dashboard analítico com visualizações interativas de dados complexos em D3.js.</div></div>
+      <div class="proj-tags"><span class="tag">React</span><span class="tag">D3.js</span></div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-icon" style="--pi:rgba(245,158,11,.06);--pib:rgba(245,158,11,.18)">⭐</div>
+      <div><div class="proj-title">Starlink Clone</div><div class="proj-desc">Simulação de rede mesh distribuída com algoritmos de roteamento inspirados em constelações.</div></div>
+      <div class="proj-tags"><span class="tag">Python</span><span class="tag">GraphQL</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="div-line"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-head">
+    <p class="section-tag">Contato</p>
+    <h2 class="section-title">Vamos Nos Conectar</h2>
+    <div class="section-line"></div>
+  </div>
+  <p class="contact-desc">Como dois corpos no espaço que se atraem pela gravidade — vamos criar algo extraordinário juntos.</p>
+  <div class="contact-btns">
+    <a href="mailto:email@exemplo.com" class="c-btn">✉ email@exemplo.com</a>
+    <a href="#" class="c-btn">💼 LinkedIn</a>
+    <a href="#" class="c-btn">🐙 GitHub</a>
+  </div>
+</section>
+
+<footer>...</footer>
+
+
+<script src="../scripts/script.js"></script>
 </body>
 </html>
