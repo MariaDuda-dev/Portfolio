@@ -1,141 +1,107 @@
-/* ══════════════════════════════════════
-   STARS — canvas background
-══════════════════════════════════════ */
-(function(){
-  const c = document.getElementById('canvas-stars');
-  const ctx = c.getContext('2d');
-  let W, H, stars = [];
+// Modo claro/escuro
+const botao = document.getElementById("modoClaroEscuro");
+let escuro = false;
 
-  function resize(){
-    W = c.width  = window.innerWidth;
-    H = c.height = window.innerHeight;
+botao.addEventListener("click", function() {
+  escuro = !escuro;
+  if (escuro) {
+    document.body.classList.add("dark");
+    botao.textContent = "Modo claro";
+  } else {
+    document.body.classList.remove("dark");
+    botao.textContent = "Modo escuro";
+  }
+});
+
+// Calcular tempo de curso
+function calcular() {
+  const inicio = new Date(document.getElementById("dataInicio").value);
+  const fim    = new Date(document.getElementById("dataFim").value);
+  const el     = document.getElementById("tempoRestante");
+
+  if (isNaN(inicio.getTime()) || isNaN(fim.getTime())) {
+    el.classList.add("visivel");
+    el.textContent = "Preencha as duas datas.";
+    return;
+  }
+  if (fim <= inicio) {
+    el.classList.add("visivel");
+    el.textContent = "Parabéns, você formou!";
+    return;
   }
 
-  function makeStars(){
-    stars = [];
-    for(let i=0;i<200;i++){
-      stars.push({
-        x: Math.random()*W,
-        y: Math.random()*H,
-        r: Math.random()*1.4+.3,
-        a: Math.random(),
-        speed: .003+Math.random()*.008,
-        phase: Math.random()*Math.PI*2
-      });
-    }
-  }
+  let anos  = fim.getFullYear() - inicio.getFullYear();
+  let meses = fim.getMonth()    - inicio.getMonth();
+  let dias  = fim.getDate()     - inicio.getDate();
 
-  function drawStars(t){
-    ctx.clearRect(0,0,W,H);
-    for(const s of stars){
-      const alpha = .15 + .7*(.5+.5*Math.sin(t*s.speed+s.phase));
-      ctx.beginPath();
-      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-      ctx.fill();
-    }
-  }
+  if (dias < 0) { meses--; dias += new Date(fim.getFullYear(), fim.getMonth(), 0).getDate(); }
+  if (meses < 0) { anos--; meses += 12; }
 
-  let t=0;
-  function loop(){
-    t += 16;
-    drawStars(t);
-    requestAnimationFrame(loop);
-  }
+  let partes = [];
+  if (anos  > 0) partes.push(anos  + " ano"  + (anos  > 1 ? "s" : ""));
+  if (meses > 0) partes.push(meses + " mês"  + (meses > 1 ? "es" : ""));
+  if (dias  > 0) partes.push(dias  + " dia"  + (dias  > 1 ? "s" : ""));
 
-  resize();
-  makeStars();
-  loop();
-  window.addEventListener('resize', ()=>{ resize(); makeStars(); });
-})();
-
-
-/* ══════════════════════════════════════
-   PLANET DATA
-══════════════════════════════════════ */
-const PLANETS = [
-  {
-    name:'Mercúrio', type:'Rochoso · 1º',
-    color:'#9b8989', glow:'rgba(168,168,168,.5)',
-    accent:'#a8a8a8',
-    radius: 6,   orbit: 80,  speed: 4.1,
-    fact:'O menor planeta do sistema solar. Um ano tem apenas 88 dias terrestres.',
-    stat:'Temperatura', val:'430°C / −180°C', badge:'Extremos'
-  },
-  {
-    name:'Vênus', type:'Rochoso · 2º',
-    color:'#bea374', glow:'rgba(232,205,160,.55)',
-    accent:'#e8cda0',
-    radius: 10,  orbit: 120, speed: 1.6,
-    fact:'O planeta mais quente do sistema — mais que Mercúrio. Gira ao contrário!',
-    stat:'Temperatura', val:'462°C constante', badge:'Rotação Inversa'
-  },
-  {
-    name:'Terra', type:'Rochoso · 3º',
-    color:'#2a5eb3', glow:'rgba(59,130,246,.6)',
-    accent:'#3b82f6',
-    radius: 11,  orbit: 165, speed: 1.0,
-    fact:'Único planeta com vida confirmada. 71% da superfície é coberta por água.',
-    stat:'Satélites', val:'1 — a Lua', badge:'Nossa Casa'
-  },
-  {
-    name:'Marte', type:'Rochoso · 4º',
-    color:'#b93939', glow:'rgba(239,68,68,.55)',
-    accent:'#ef4444',
-    radius: 8,   orbit: 210, speed: 0.53,
-    fact:'Abriga o Olympus Mons, vulcão de 22 km — o maior do sistema solar.',
-    stat:'Satélites', val:'Fobos & Deimos', badge:'Planeta Vermelho'
-  },
-  {
-    name:'Júpiter', type:'Gasoso · 5º',
-    color:'#af8943', glow:'rgba(200,169,110,.55)',
-    accent:'#c8a96e',
-    radius: 30,  orbit: 270, speed: 0.084,
-    fact:'A Grande Mancha Vermelha é uma tempestade que dura há mais de 350 anos.',
-    stat:'Satélites', val:'95 conhecidos', badge:'O Gigante'
-  },
-  {
-    name:'Saturno', type:'Gasoso · 6º',
-    color:'#ffecb3', glow:'rgba(226,201,126,.5)',
-    accent:'#e2c97e',
-    radius: 24,  orbit: 340, speed: 0.034,
-    hasRings: true,
-    fact:'Seus anéis têm 270 mil km de largura, mas apenas ~1 km de espessura.',
-    stat:'Densidade', val:'Menor que a água!', badge:'Anéis Épicos'
-  },
-  {
-    name:'Urano', type:'Gelado · 7º',
-    color:'#3ab6b6', glow:'rgba(125,232,232,.5)',
-    accent:'#7de8e8',
-    radius: 18,  orbit: 400, speed: 0.012,
-    fact:'Gira de lado — inclinação de 98°. Um polo fica 42 anos sem ver o sol.',
-    stat:'Satélites', val:'27 (nomes Shakespeare)', badge:'Deitado'
-  },
-  {
-    name:'Netuno', type:'Gelado · 8º',
-    color:'#315ab9', glow:'rgba(75,123,236,.55)',
-    accent:'#4b7bec',
-    radius: 17,  orbit: 450, speed: 0.006,
-    fact:'Ventos de até 2.100 km/h. Um ano equivale a 165 anos terrestres.',
-    stat:'Distância', val:'4,5 bilhões de km', badge:'Ventos Extremos'
-  }
-];
-
-/* ══════════════════════════════════════
-   PLANET CARDS
-══════════════════════════════════════ */
-const grid = document.getElementById('planets-grid');
-for(const p of PLANETS){
-  const card = document.createElement('div');
-  card.className = 'p-card';
-  card.style.setProperty('--pc', p.accent);
-  card.innerHTML = `
-    <div class="p-ball" style="--pb:${p.color};--pg:${p.glow}"></div>
-    <div class="p-name">${p.name}</div>
-    <div class="p-type">${p.type}</div>
-    <div class="p-fact">${p.fact}</div>
-    <div class="p-stat">${p.stat}: <b>${p.val}</b></div>
-    <span class="p-badge">${p.badge}</span>
-  `;
-  grid.appendChild(card);
+  const suffix = anos <= 0 ? " — você está na reta final!" : "";
+  el.classList.add("visivel");
+  el.textContent = "Tempo restante: " + (partes.join(" | ") || "Menos de um dia!") + suffix;
 }
+
+// Quiz
+let pontosFront = 0;
+let pontosBack  = 0;
+
+document.getElementById("btn-visual").addEventListener("click", function() {
+  pontosFront++;
+  document.getElementById("btn-visual").classList.add("ativo");
+  document.getElementById("btn-logica").classList.remove("ativo");
+  mostrarPerfil();
+});
+
+document.getElementById("btn-logica").addEventListener("click", function() {
+  pontosBack++;
+  document.getElementById("btn-logica").classList.add("ativo");
+  document.getElementById("btn-visual").classList.remove("ativo");
+  mostrarPerfil();
+});
+
+function mostrarPerfil() {
+  const el = document.getElementById("resultado-quiz");
+  el.classList.add("visivel");
+  if (pontosFront > pontosBack)      el.textContent = "Você tem perfil Front-End!";
+  else if (pontosBack > pontosFront) el.textContent = "Você tem perfil Back-End!";
+  else                               el.textContent = "Você tem perfil Full Stack!";
+}
+
+for (/**Gatilho inicial/começo*/ let i=0; /*limite,limitador,roda enquanto*/i<= 20; i++/*incremento e decremento */){
+  let pares = (i % 2 === 0)? "Par" : "impar";
+  console.log(`${i} - ${pares} `);
+}
+
+let object = {
+  nome: "Maria Duda",
+  Idade: "18",
+  profissao: "tecnica em desenvolvimento de sistemas"
+}
+for (let chave in object) {
+  document.write(`<p> ${chave} : ${object[chave]}</p>`);
+}
+
+
+let alunos = ["Maria", "Biel", "Guel"];
+for (let conten of alunos) {
+  if (conten === "Maria") {
+    document.write(`<p> ${conten} - Presente </p>`);
+  } else {
+    document.write(`<p> ${conten} - Ausente </p>`);
+  }
+}
+
+let num = prompt("Digite um número par: ");
+while (num % 2 !== 0) {
+  num = prompt ("Ops, esse número não é par. Tenta denovo ai fi")
+}
+
+do {
+  num = prompt("Diga um número par: ")
+} while (num % 2 !== 0)
