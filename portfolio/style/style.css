@@ -1,16 +1,18 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+ /* CORES DO SISTEMA  */
 :root {
   --gold: #f59e0b;
   --gold-dim: rgba(245,158,11,0.15);
   --blue: #60a5fa;
   --text: #e2e8f0;
   --muted: #64748b;
-  --bg: #020817;
+  --bg: #050b1a;
   --card: rgba(10,18,40,0.85);
   --border: rgba(255,255,255,0.07);
 }
 
+/* ROLAMENTO SUAVE DA BARRA DE NAVEGAÇÃO ATÉ A SEÇÃO */
 html { scroll-behavior: smooth; }
 
 body {
@@ -21,7 +23,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── STARS ── */
+/* CANVAS DAS ESTRELAS DO BACKGROUND  */
 #canvas-stars {
   position: fixed;
   inset: 0;
@@ -29,7 +31,7 @@ body {
   pointer-events: none;
 }
 
-/* ── NAV ── */
+/* BARRA DE NAVEGAÇÃO */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -43,6 +45,7 @@ nav {
   border-bottom: 1px solid var(--border);
 }
 
+/* Logo que aparece na barra de navegação */
 .nav-logo {
   font-family: 'Cinzel', serif;
   font-size: 0.9rem;
@@ -50,6 +53,7 @@ nav {
   color: var(--gold);
 }
 
+/* links da barra de navegação */
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
   font-size: 0.72rem;
@@ -61,8 +65,43 @@ nav {
 }
 .nav-links a:hover { color: var(--gold); }
 
-/* ── SECTIONS ── */
+/* SEÇÕES */
 section { position: relative; z-index: 1; }
+
+/* Estilização dos títulos das seções  */
+.section-head{
+  text-align:center;
+  margin-bottom:3rem;
+}
+
+.section-tag{
+  font-size:.62rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:.7rem;
+}
+
+.section-title{
+  font-family:'Cinzel', serif;
+  font-size:clamp(1.5rem,3.2vw,2.4rem);
+  font-weight:700;
+  color:#f8fafc;
+  margin-bottom:.9rem;
+}
+
+.section-line{
+  width:120px;
+  height:1px;
+  margin:0 auto;
+  background:linear-gradient(
+    to right,
+    transparent,
+    rgba(245,158,11,.8),
+    transparent
+  );
+}
+
 
 /* ── HERO ── */
 #hero {
@@ -107,14 +146,6 @@ section { position: relative; z-index: 1; }
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: .75rem;
-}
-
-.hero-role {
-  font-size: .9rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
 }
 
 .hero-bio {
@@ -256,6 +287,16 @@ section { position: relative; z-index: 1; }
   margin: 0 auto;
 }
 
+.section-desc{
+  max-width: 700px;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: .88rem;
+  line-height: 1.9;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -326,6 +367,11 @@ section { position: relative; z-index: 1; }
   border: 1px solid var(--border);
   color: #94a3b8;
   white-space: nowrap;
+}
+
+.proj-card{
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ── CONTACT ── */

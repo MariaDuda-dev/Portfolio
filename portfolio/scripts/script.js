@@ -56,7 +56,7 @@
 const PLANETS = [
   {
     name:'Mercúrio', type:'Rochoso · 1º',
-    color:'#a8a8a8', glow:'rgba(168,168,168,.5)',
+    color:'#9b8989', glow:'rgba(168,168,168,.5)',
     accent:'#a8a8a8',
     radius: 6,   orbit: 80,  speed: 4.1,
     fact:'O menor planeta do sistema solar. Um ano tem apenas 88 dias terrestres.',
@@ -64,7 +64,7 @@ const PLANETS = [
   },
   {
     name:'Vênus', type:'Rochoso · 2º',
-    color:'#e8cda0', glow:'rgba(232,205,160,.55)',
+    color:'#bea374', glow:'rgba(232,205,160,.55)',
     accent:'#e8cda0',
     radius: 10,  orbit: 120, speed: 1.6,
     fact:'O planeta mais quente do sistema — mais que Mercúrio. Gira ao contrário!',
@@ -72,7 +72,7 @@ const PLANETS = [
   },
   {
     name:'Terra', type:'Rochoso · 3º',
-    color:'#3b82f6', glow:'rgba(59,130,246,.6)',
+    color:'#2a5eb3', glow:'rgba(59,130,246,.6)',
     accent:'#3b82f6',
     radius: 11,  orbit: 165, speed: 1.0,
     fact:'Único planeta com vida confirmada. 71% da superfície é coberta por água.',
@@ -80,7 +80,7 @@ const PLANETS = [
   },
   {
     name:'Marte', type:'Rochoso · 4º',
-    color:'#ef4444', glow:'rgba(239,68,68,.55)',
+    color:'#b93939', glow:'rgba(239,68,68,.55)',
     accent:'#ef4444',
     radius: 8,   orbit: 210, speed: 0.53,
     fact:'Abriga o Olympus Mons, vulcão de 22 km — o maior do sistema solar.',
@@ -88,7 +88,7 @@ const PLANETS = [
   },
   {
     name:'Júpiter', type:'Gasoso · 5º',
-    color:'#c8a96e', glow:'rgba(200,169,110,.55)',
+    color:'#af8943', glow:'rgba(200,169,110,.55)',
     accent:'#c8a96e',
     radius: 30,  orbit: 270, speed: 0.084,
     fact:'A Grande Mancha Vermelha é uma tempestade que dura há mais de 350 anos.',
@@ -96,7 +96,7 @@ const PLANETS = [
   },
   {
     name:'Saturno', type:'Gasoso · 6º',
-    color:'#e2c97e', glow:'rgba(226,201,126,.5)',
+    color:'#ffecb3', glow:'rgba(226,201,126,.5)',
     accent:'#e2c97e',
     radius: 24,  orbit: 340, speed: 0.034,
     hasRings: true,
@@ -105,7 +105,7 @@ const PLANETS = [
   },
   {
     name:'Urano', type:'Gelado · 7º',
-    color:'#7de8e8', glow:'rgba(125,232,232,.5)',
+    color:'#3ab6b6', glow:'rgba(125,232,232,.5)',
     accent:'#7de8e8',
     radius: 18,  orbit: 400, speed: 0.012,
     fact:'Gira de lado — inclinação de 98°. Um polo fica 42 anos sem ver o sol.',
@@ -113,7 +113,7 @@ const PLANETS = [
   },
   {
     name:'Netuno', type:'Gelado · 8º',
-    color:'#4b7bec', glow:'rgba(75,123,236,.55)',
+    color:'#315ab9', glow:'rgba(75,123,236,.55)',
     accent:'#4b7bec',
     radius: 17,  orbit: 450, speed: 0.006,
     fact:'Ventos de até 2.100 km/h. Um ano equivale a 165 anos terrestres.',
