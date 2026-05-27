@@ -1,6 +1,6 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
- /* CORES DO SISTEMA  */
+ /* CORES E FONTES DO SISTEMA  */
 :root {
   --gold: #f59e0b;
   --gold-dim: rgba(245,158,11,0.15);
@@ -10,6 +10,9 @@
   --bg: #050b1a;
   --card: rgba(10,18,40,0.85);
   --border: rgba(255,255,255,0.07);
+  --font-titulo: 'Plus Jakarta Sans', sans-serif;
+  --font-subtitulo: 'Figtree', sans-serif;
+  --font-corpo: 'Space Grotesk', sans-serif;
 }
 
 /* ROLAMENTO SUAVE DA BARRA DE NAVEGAÇÃO ATÉ A SEÇÃO */
@@ -18,7 +21,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--font-corpo);
   font-weight: 300;
   overflow-x: hidden;
 }
@@ -47,8 +50,7 @@ nav {
 
 /* Logo que aparece na barra de navegação */
 .nav-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
+  font-size: 1.5rem;
   letter-spacing: 0.25em;
   color: var(--gold);
 }
@@ -83,7 +85,7 @@ section { position: relative; z-index: 1; }
 }
 
 .section-title{
-  font-family:'Cinzel', serif;
+  font-family: var(--font-subtitulo);
   font-size:clamp(1.5rem,3.2vw,2.4rem);
   font-weight:700;
   color:#f8fafc;
@@ -103,7 +105,7 @@ section { position: relative; z-index: 1; }
 }
 
 
-/* ── HERO ── */
+/* Hero */
 #hero {
   min-height: 100vh;
   display: flex;
@@ -137,15 +139,16 @@ section { position: relative; z-index: 1; }
 }
 
 .hero-title {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-titulo);
   font-size: clamp(2.4rem, 5vw, 4rem);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
   background: linear-gradient(135deg, #fde68a, #f59e0b 40%, #fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: .75rem;
+  padding-bottom: 1rem;
 }
 
 .hero-bio {
@@ -161,7 +164,7 @@ section { position: relative; z-index: 1; }
   padding: .7rem 2rem;
   border: 1px solid rgba(245,158,11,.5);
   color: var(--gold);
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--font-corpo);
   font-size: .78rem;
   letter-spacing: .22em;
   text-transform: uppercase;
@@ -201,7 +204,7 @@ section { position: relative; z-index: 1; }
 
 
 
-/* Planet cards */
+/* Cards dos praneta */
 .planets-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -243,7 +246,7 @@ section { position: relative; z-index: 1; }
 }
 
 .p-name {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-corpo);
   font-size: .95rem;
   margin-bottom: .2rem;
 }
@@ -284,7 +287,7 @@ section { position: relative; z-index: 1; }
   text-transform: uppercase;
 }
 
-/* ── SKILLS ── */
+/* Habilidades */
 #skills {
   padding: 6rem 2rem;
   max-width: 860px;
@@ -318,17 +321,7 @@ section { position: relative; z-index: 1; }
 .skill-name { font-size: .85rem; color: #cbd5e1; font-weight: 500; }
 .skill-pct { font-size: .78rem; color: var(--gold); }
 
-.bar-bg { height: 3px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
-.bar-fill {
-  height: 100%;
-  border-radius: 2px;
-  background: linear-gradient(to right, #1e3a5f, #3b82f6, #93c5fd);
-  animation: grow 1.4s cubic-bezier(.4,0,.2,1) both;
-  transform-origin: left;
-}
-@keyframes grow { from{transform:scaleX(0)} to{transform:scaleX(1)} }
-
-/* ── PROJECTS ── */
+/* Projetos */
 #projects {
   padding: 6rem 2rem;
   max-width: 860px;
@@ -378,7 +371,7 @@ section { position: relative; z-index: 1; }
   color: inherit;
 }
 
-/* ── CONTACT ── */
+/* Contato */
 #contact {
   padding: 6rem 2rem 5rem;
   text-align: center;
@@ -397,13 +390,13 @@ section { position: relative; z-index: 1; }
   letter-spacing: .08em;
   cursor: pointer;
   background: transparent;
-  font-family: 'Raleway', sans-serif;
+  font-family: var(--font-corpo);
   transition: all .3s;
   text-decoration: none;
 }
 .c-btn:hover { border-color: rgba(245,158,11,.4); color: var(--gold); background: rgba(245,158,11,.05); }
 
-/* ── DIVIDER ── */
+/* Linha de divisão */
 .div-line {
   width: 100%;
   height: 1px;
@@ -413,7 +406,7 @@ section { position: relative; z-index: 1; }
   position: relative; z-index: 1;
 }
 
-/* ── FOOTER ── */
+/* Footer */
 footer {
   text-align: center;
   padding: 2rem;
@@ -424,22 +417,6 @@ footer {
   position: relative; z-index: 1;
 }
 
-/* ── TOOLTIP ── */
-#planet-tooltip {
-  position: fixed;
-  background: rgba(10,18,40,.95);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 8px;
-  padding: .6rem .9rem;
-  font-size: .8rem;
-  color: var(--text);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .2s;
-  z-index: 200;
-  max-width: 180px;
-  line-height: 1.5;
-}
 
 @media (max-width: 600px) {
   .skills-grid { grid-template-columns: 1fr; }
